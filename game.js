@@ -1,3 +1,6 @@
+const winnerPopup=document.getElementById("winnerPopup");
+const winnerTitle=document.getElementById("winnerTitle");
+const nextRound=document.getElementById("nextRound");
 // ==============================
 // XO CLASH - GAME.JS (Version 1)
 // ==============================
