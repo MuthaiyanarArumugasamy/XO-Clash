@@ -1,3 +1,6 @@
+let xScore = 0;
+let oScore = 0;
+let drawScore = 0;
 const cells = document.querySelectorAll(".cell");
 const turnText = document.querySelector(".turn");
 const restartBtn = document.querySelector(".restart");
