@@ -94,4 +94,49 @@ font-size:20px;
 
 cursor:pointer;
 
+}.score-board{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-top:20px;
+
 }
+
+.score-card{
+
+width:100px;
+
+padding:15px;
+
+background:#111827;
+
+border-radius:15px;
+
+text-align:center;
+
+box-shadow:0 0 15px #00E5FF;
+
+transition:.3s;
+
+}
+
+.score-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.score-card h2{
+
+margin-top:10px;
+
+color:#00E5FF;
+
+font-size:30px;
+
+}
+
