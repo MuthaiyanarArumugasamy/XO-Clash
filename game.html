@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XO Clash</title>
 
-    <link rel="stylesheet" href="game.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>XO Clash</title>
+
+<link rel="stylesheet" href="game.css">
+
 </head>
 
 <body>
@@ -13,37 +16,52 @@
 <div class="top-bar">
 
     <div class="coins">
-        🪙 500
+        🪙 <span id="coins">500</span>
     </div>
 
-    <div class="turn">
+    <div class="turn" id="turn">
         Player X Turn
     </div>
 
-    <div class="score">
-        X 0 : 0 O
+</div>
+
+<div class="score-board">
+
+    <div class="score-card">
+        X
+        <h2 id="xScore">0</h2>
+    </div>
+
+    <div class="score-card">
+        DRAW
+        <h2 id="drawScore">0</h2>
+    </div>
+
+    <div class="score-card">
+        O
+        <h2 id="oScore">0</h2>
     </div>
 
 </div>
 
 <div class="board">
 
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
 
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
 
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
 
 </div>
 
 <button class="restart">
-Restart Game
+    Restart Game
 </button>
 
 <script src="game.js"></script>
