@@ -1,10 +1,8 @@
-const winnerPopup=document.getElementById("winnerPopup");
-const winnerTitle=document.getElementById("winnerTitle");
-const nextRound=document.getElementById("nextRound");
-// ==============================
-// XO CLASH - GAME.JS (Version 1)
-// ==============================
+// ================================
+// XO CLASH - GAME.JS (Version 2.0)
+// ================================
 
+// Elements
 const cells = document.querySelectorAll(".cell");
 const turnText = document.getElementById("turn");
 const restartBtn = document.querySelector(".restart");
@@ -14,16 +12,22 @@ const oScoreText = document.getElementById("oScore");
 const drawScoreText = document.getElementById("drawScore");
 const coinsText = document.getElementById("coins");
 
+const winnerPopup = document.getElementById("winnerPopup");
+const winnerTitle = document.getElementById("winnerTitle");
+const nextRound = document.getElementById("nextRound");
+
+// Variables
 let currentPlayer = "X";
 let gameActive = true;
 
-let board = ["", "", "", "", "", "", "", "", ""];
+let board = ["","","","","","","","",""];
 
 let xScore = 0;
 let oScore = 0;
 let drawScore = 0;
 let coins = 500;
 
+// Win Patterns
 const winPatterns = [
     [0,1,2],
     [3,4,5],
@@ -40,25 +44,31 @@ cells.forEach((cell,index)=>{
 
     cell.addEventListener("click",()=>{
 
-        if(board[index]!=="" || !gameActive){
-            return;
-        }
+        if(!gameActive) return;
+
+        if(board[index]!="") return;
 
         board[index]=currentPlayer;
 
         cell.innerHTML=currentPlayer;
 
-        if(currentPlayer==="X"){
-            cell.style.color="#00E5FF";
-        }else{
-            cell.style.color="#FF4081";
-        }
-
-        cell.style.transform="scale(1.1)";
+        cell.style.transform="scale(1.15)";
 
         setTimeout(()=>{
+
             cell.style.transform="scale(1)";
+
         },150);
+
+        if(currentPlayer=="X"){
+
+            cell.style.color="#00E5FF";
+
+        }else{
+
+            cell.style.color="#FF4081";
+
+        }
 
         checkWinner();
 
@@ -76,40 +86,38 @@ function checkWinner(){
         let c=pattern[2];
 
         if(
-            board[a]!=="" &&
-            board[a]===board[b] &&
-            board[a]===board[c]
+            board[a]!="" &&
+            board[a]==board[b] &&
+            board[a]==board[c]
         ){
 
             gameActive=false;
 
-            cells[a].style.background="#00ff99";
-            cells[b].style.background="#00ff99";
-            cells[c].style.background="#00ff99";
+            cells[a].style.background="#00FF99";
+            cells[b].style.background="#00FF99";
+            cells[c].style.background="#00FF99";
 
-            if(currentPlayer==="X"){
+            if(currentPlayer=="X"){
 
                 xScore++;
-                coins += 100;
 
                 xScoreText.innerHTML=xScore;
 
             }else{
 
                 oScore++;
-                coins += 100;
 
                 oScoreText.innerHTML=oScore;
 
             }
 
+            coins+=100;
+
             coinsText.innerHTML=coins;
 
-            setTimeout(()=>{
+            winnerTitle.innerHTML="🏆 Player "+currentPlayer+" Wins!";
 
-                alert("🎉 Player "+currentPlayer+" Wins!");
-
-            },300);
+            winnerPopup.style.display="flex";
 
             return;
 
@@ -125,38 +133,48 @@ function checkWinner(){
 
         drawScoreText.innerHTML=drawScore;
 
-        coins += 20;
+        coins+=20;
 
         coinsText.innerHTML=coins;
 
         gameActive=false;
 
-        setTimeout(()=>{
+        winnerTitle.innerHTML="🤝 Match Draw!";
 
-            alert("🤝 Match Draw!");
-
-        },300);
+        winnerPopup.style.display="flex";
 
         return;
 
     }
 
-    currentPlayer=currentPlayer==="X"?"O":"X";
+    // Change Player
+
+    currentPlayer=currentPlayer=="X" ? "O":"X";
 
     turnText.innerHTML="Player "+currentPlayer+" Turn";
 
 }
 
-// Restart
+// Restart Button
 restartBtn.addEventListener("click",restartGame);
 
+// Next Round Button
+nextRound.addEventListener("click",()=>{
+
+    winnerPopup.style.display="none";
+
+    restartGame();
+
+});
+
+// Restart Game
 function restartGame(){
 
     board=["","","","","","","","",""];
 
-    gameActive=true;
-
     currentPlayer="X";
+
+    gameActive=true;
 
     turnText.innerHTML="Player X Turn";
 
@@ -168,6 +186,37 @@ function restartGame(){
 
         cell.style.color="white";
 
+        cell.style.transform="scale(1)";
+
     });
+
+}
+
+// ============================
+// Future Functions (Coming)
+// ============================
+
+// AI
+function startAI(){
+
+}
+
+// Sound
+function playSound(sound){
+
+}
+
+// Save Data
+function saveGame(){
+
+}
+
+// Load Data
+function loadGame(){
+
+}
+
+// Theme
+function changeTheme(theme){
 
 }
